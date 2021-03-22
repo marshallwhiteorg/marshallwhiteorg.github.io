@@ -1,3 +1,34 @@
+html {
+  background:#ecf0f1;
+}
+
+canvas {
+  display:block;
+  margin:auto;
+  background:#ecf0f1;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.arrival {
+  text-align: center;
+  opacity: 0;
+  transition: all;
+  animation: arrive 1s normal forwards;
+  animation-delay: 3s;
+}
+
+@keyframes arrive {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
 .ssimplex1, .ssimplex2 {
   position: absolute;
   top: 50%;
