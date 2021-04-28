@@ -1,4 +1,4 @@
-// Created by Johan Fagerbeg @birjolaxew
+// Created by Johan Fagerberg @birjolaxew
 
 var c = document.getElementById("title-canvas");
 var ctx = c.getContext("2d");
@@ -6,7 +6,7 @@ var mask;
 
 var pointCount = 500;
 var str = "Oh brave new world...";
-var fontStr = "bold 64pt Helvetica Neue, Helvetica, Arial, sans-serif";
+var fontStr = "bold 64pt Arial, sans-serif";
 
 ctx.font = fontStr;
 ctx.textAlign = "center";

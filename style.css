@@ -10,3 +10,19 @@ canvas {
   margin:auto; 
   background:#ecf0f1;
 }
+
+.name, .location, .link {
+  font-family:"Arial", sans-serif;
+}
+
+.name {
+  font-size:x-large;
+}
+
+.location {
+  font-size:medium;
+}
+
+.link {
+  font-size:medium;
+}
