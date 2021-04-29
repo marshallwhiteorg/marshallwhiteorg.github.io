@@ -5,7 +5,7 @@ var c = document.getElementById("title-canvas");
 var ctx = c.getContext("2d");
 var mask;
 
-var pointCount = 600;
+var pointCount = 500;
 var str = "OH BRAVE NEW WORLD...";
 var fontStr = "bold 48pt Arial, sans-serif";
 var fontSize = 48;
