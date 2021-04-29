@@ -2,11 +2,11 @@ html {
   background:#ecf0f1;
 }
 
-button {
+.button {
   position:absolute;
   left:16px;
-  height: 40px;
-  width: 40px;
+  height:50px;
+  width:50px;
   border:none;
   cursor:pointer;
   background-color:#ecf0f1;
@@ -29,12 +29,12 @@ button {
 
 #linkedin-button {
   background:url(images/linkedin.svg);
-  top:160px;
+  top:175px;
 }
 
 #googlescholar-button {
   background:url(images/googlescholar.svg);
-  top:220px;
+  top:250px;
 }
 
 .title-canvas {
@@ -46,9 +46,4 @@ button {
   margin:auto; 
   background:#ecf0f1;
   z-index:1;
-}
-
-.info-canvas {
-  position:absolute;
-  z-index:2;
 }

@@ -5,7 +5,7 @@ var c = document.getElementById("title-canvas");
 var ctx = c.getContext("2d");
 var mask;
 
-var pointCount = 500;
+var pointCount = 600;
 var str = "OH BRAVE NEW WORLD...";
 var fontStr = "bold 48pt Arial, sans-serif";
 var fontSize = 48;
@@ -24,6 +24,8 @@ var points = [];
 var point = function(x, y, vx, vy){
   this.x = x;
   this.y = y;
+  this.startX = x;
+  this.startY = y;
   this.vx = vx || 1; // note
   this.vy = vy || 1; // note
   this.updateCount = 0;
@@ -41,14 +43,33 @@ point.prototype.update = function() {
   ctx.closePath();
 
   this.updateCount += 1;
+  let rand = Math.random()
 
   // Let this point roam with 1% probability per update, after chaos is allowed
   // I don't know how to break long lines in JS, among other topics
-  if (!this.unrestrictedMovement) {
-    this.unrestrictedMovement = this.updateCount >= 1000/updateInterval*commenceChaos && Math.random() > .99;
+  if (this.updateCount >= 1000/updateInterval*commenceChaos && !this.unrestrictedMovement) {
+    this.unrestrictedMovement = rand > .998;
   }
-  if (this.unrestrictedMovement && this.dynamicDistance < 75) {
-    this.dynamicDistance += .1;
+
+  if (this.unrestrictedMovement) {
+    // Increase range of contact
+    if (this.dynamicDistance < 75) {
+      this.dynamicDistance += .2;
+    }
+
+    // Increase speed
+    if (Math.abs(this.vx) <= 1.5) {
+      this.vx = this.vx * (1 + rand);
+    }
+    if (Math.abs(this.vy) <= 1.5) {
+      this.vy = this.vy * (1 + rand/4);
+    }
+
+    // Maybe respawn
+    if (rand < .00001) {
+      this.x = this.startX;
+      this.y = this.startY;
+    }
   }
   
   // Change direction if running into a black pixel
@@ -81,7 +102,7 @@ point.prototype.update = function() {
       ctx.stroke();
     }
   }
-  
+
   this.x += this.vx;
   this.y += this.vy;
 }
