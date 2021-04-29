@@ -1,7 +1,43 @@
 html {
   background:#ecf0f1;
 }
-canvas {
+
+button {
+  position:absolute;
+  left:16px;
+  height: 30px;
+  width: 30px;
+  border:none;
+  cursor:pointer;
+  background-color:#ecf0f1;
+  z-index:3;
+}
+
+#name {
+  position:absolute;
+  font-family:"Arial bold", sans-serif;
+  font-size:xx-large;
+  left:16px;
+  top:16px;
+  z-index:3;
+}
+
+#github-button {
+  background:url(images/github.svg);
+  top:100px;
+}
+
+#linkedin-button {
+  background:url(images/linkedin.svg);
+  top:150px;
+}
+
+#googlescholar-button {
+  background:url(images/googlescholar.svg);
+  top:200px;
+}
+
+.title-canvas {
   position:absolute; 
   top:0;
   bottom:0;
@@ -9,20 +45,10 @@ canvas {
   left:0; 
   margin:auto; 
   background:#ecf0f1;
+  z-index:1;
 }
 
-.name, .location, .link {
-  font-family:"Arial", sans-serif;
-}
-
-.name {
-  font-size:x-large;
-}
-
-.location {
-  font-size:medium;
-}
-
-.link {
-  font-size:medium;
+.info-canvas {
+  position:absolute;
+  z-index:2;
 }
