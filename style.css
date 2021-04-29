@@ -5,8 +5,8 @@ html {
 button {
   position:absolute;
   left:16px;
-  height: 30px;
-  width: 30px;
+  height: 40px;
+  width: 40px;
   border:none;
   cursor:pointer;
   background-color:#ecf0f1;
@@ -29,12 +29,12 @@ button {
 
 #linkedin-button {
   background:url(images/linkedin.svg);
-  top:150px;
+  top:160px;
 }
 
 #googlescholar-button {
   background:url(images/googlescholar.svg);
-  top:200px;
+  top:220px;
 }
 
 .title-canvas {

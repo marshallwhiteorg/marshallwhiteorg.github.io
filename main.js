@@ -7,8 +7,8 @@ var mask;
 
 var pointCount = 500;
 var str = "OH BRAVE NEW WORLD...";
-var fontStr = "bold 64pt Arial, sans-serif";
-var fontSize = 64;
+var fontStr = "bold 48pt Arial, sans-serif";
+var fontSize = 48;
 
 var updateInterval = 50; // Milliseconds
 var commenceChaos = 4; // Seconds
