@@ -1,6 +1,3 @@
-// Originally created by Johan Fagerberg @birjolaxew
-// (I have made changes)
-
 var c = document.getElementById("title-canvas");
 var ctx = c.getContext("2d");
 var mask;
@@ -10,8 +7,8 @@ var str = "OH BRAVE NEW WORLD...";
 var fontStr = "bold 48pt Arial, sans-serif";
 var fontSize = 48;
 
-var updateInterval = 50; // Milliseconds
-var commenceChaos = 4; // Seconds
+var updateInterval = 50; // ms
+var commenceChaos = 4; // s
 var boldLineDistance = 5;
 var lightLineDistance = 20;
 
@@ -26,12 +23,11 @@ var point = function(x, y, vx, vy){
   this.y = y;
   this.startX = x;
   this.startY = y;
-  this.vx = vx || 1; // note
-  this.vy = vy || 1; // note
+  this.vx = vx || 1;
+  this.vy = vy || 1;
   this.updateCount = 0;
   this.unrestrictedMovement = 0;
 
-  // The distance threshold for light lines changes over time
   this.dynamicDistance = lightLineDistance;
 }
 
@@ -46,18 +42,15 @@ point.prototype.update = function() {
   let rand = Math.random()
 
   // Let this point roam with 1% probability per update, after chaos is allowed
-  // I don't know how to break long lines in JS, among other topics
   if (this.updateCount >= 1000/updateInterval*commenceChaos && !this.unrestrictedMovement) {
     this.unrestrictedMovement = rand > .998;
   }
 
   if (this.unrestrictedMovement) {
-    // Increase range of contact
     if (this.dynamicDistance < 75) {
       this.dynamicDistance += .2;
     }
 
-    // Increase speed
     if (Math.abs(this.vx) <= 1.5) {
       this.vx = this.vx * (1 + rand);
     }
@@ -65,14 +58,12 @@ point.prototype.update = function() {
       this.vy = this.vy * (1 + rand/4);
     }
 
-    // Maybe respawn
     if (rand < .00001) {
       this.x = this.startX;
       this.y = this.startY;
     }
   }
   
-  // Change direction if running into a black pixel
   if (this.x+this.vx >= c.width || this.x+this.vx < 0 || !this.unrestrictedMovement && mask.data[coordsToI(this.x+this.vx, this.y, mask.width)] != 255) {
     this.vx *= -1;
     this.x += this.vx*2;
@@ -116,13 +107,12 @@ function loop() {
 
 function init() {
   ctx.beginPath();
-  ctx.fillStyle = "#000"; // Black
+  ctx.fillStyle = "#000";
   ctx.rect(0,0,c.width,c.height);
   ctx.fill();
   ctx.font = fontStr;
 
-  // Draw fancy text
-  ctx.fillStyle = "#fff"; // White
+  ctx.fillStyle = "#fff";
   ctx.textBaseline = 'middle';
   ctx.textAlign = 'center';
   ctx.fillText(str, c.width/2, c.height/2);
